@@ -1,0 +1,3 @@
+/Users/daltongabrielabambari/Documents/portalegre/graficas/pacman/cmake-build-debug/CMakeFiles/pacman.dir
+/Users/daltongabrielabambari/Documents/portalegre/graficas/pacman/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/daltongabrielabambari/Documents/portalegre/graficas/pacman/cmake-build-debug/CMakeFiles/rebuild_cache.dir

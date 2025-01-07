@@ -1,5 +1,5 @@
 #include <GL/glut.h>
-#include <stdio.h>
+#include <cstdio>
 #include "pm_maps.h"
 
 // Variables globales para controlar el tamaño de la ventana y el mapa
@@ -8,33 +8,31 @@ int windowHeight = 600;
 
 // Función para configurar la ventana y la proyección
 void initOpenGL() {
-    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);  // Fondo negro
+    glEnable(GL_DEPTH_TEST);  // Habilitar profundidad para cubos 3D
 
-    // Configurar la proyección 3D (perspectiva)
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluPerspective(45.0f, (double)windowWidth / (double)windowHeight, 0.1f, 100.0f);  // Campo de visión, ratio, near y far plane
+    gluPerspective(45.0, 1.0, 1.0, 100.0);  // Configurar la perspectiva
 
-    // Establecer la matriz de modelo y vista
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 
-    glTranslatef(0.0f, -5.0f, -15.0f);  // Mover la escena para que esté alejada del origen (para verla)
-
-    // Habilitar iluminación (si lo deseas, si no, puedes omitir esto)
-    glEnable(GL_LIGHTING);
-    glEnable(GL_LIGHT0);  // Activar la luz principal
+    glEnable(GL_BLEND);              // Habilitar transparencia
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }
 
 // Función de renderizado
 void display() {
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);  // Limpiar la pantalla y el buffer de profundidad
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    // Renderizar el mapa
+    glLoadIdentity();
+    gluLookAt(10.0, 10.0, 20.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0);  // Ajustar la vista
+
     renderMap();
 
-    glutSwapBuffers();  // Intercambiar buffers para mostrar la escena
+    glutSwapBuffers();
 }
+
 
 // Función de actualización de la ventana
 void reshape(int w, int h) {

@@ -3,8 +3,8 @@
 //
 
 #include "pm_maps.h"
-#include <stdlib.h>
-#include <stdio.h>
+#include <cstdlib>
+#include <cstdio>
 
 static FILE* file = NULL;
 
@@ -116,39 +116,39 @@ void printMap() {
 }
 
 void renderMap() {
-    char** map = getMap();
+    char** map = getMap();  // Obtener el mapa actual
     if (map == nullptr) {
         printf("No map loaded!\n");
         return;
     }
 
-    int xSize = xTabSize();
-    int ySize = yTabSize();
+    int xSize = xTabSize();  // Tamaño en X
+    int ySize = yTabSize();  // Tamaño en Y
 
-    glPushMatrix();  // Guardar la matriz actual
+    glPushMatrix();
 
-    // Renderizar cada celda del mapa
     for (int y = 0; y < ySize; y++) {
         for (int x = 0; x < xSize; x++) {
+            glPushMatrix();
+
+            // Posicionar el cubo en su lugar correspondiente
+            glTranslatef((float)x - xSize / 2.0f, (float)y - ySize / 2.0f, 0.0f);
+
             if (map[x][y] == 0) {
-                // Obstáculo: Renderizar un cubo en esta posición
-                glPushMatrix();
-                glTranslatef((float)x, (float)y, 0.0f);  // Mover el cubo a la posición
-                glColor3f(1.0f, 0.0f, 0.0f);             // Color rojo para obstáculos
-                glutSolidCube(1.0f);                     // Cubo de tamaño 1x1x1
-                glPopMatrix();
+                // Obstáculo (cubo rojo)
+                glColor3f(1.0f, 0.0f, 0.0f);
+                glutSolidCube(1.0f);
             } else {
-                // Celda libre: Opcionalmente, renderizar un plano o dejar vacío
-                glPushMatrix();
-                glTranslatef((float)x, (float)y, 0.0f);
-                glColor3f(0.0f, 0.5f, 0.0f);             // Color verde para celdas libres
-                glutSolidCube(0.2f);                     // Cubo pequeño o plano
-                glPopMatrix();
+                // Celda libre (cubo transparente o diferente)
+                glColor4f(0.0f, 0.5f, 0.0f, 0.5f);  // Verde semi-transparente
+                glutSolidCube(1.0f);
             }
+
+            glPopMatrix();
         }
     }
 
-    glPopMatrix();  // Restaurar la matriz original
+    glPopMatrix();
 }
 
 

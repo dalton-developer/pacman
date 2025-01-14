@@ -11,7 +11,8 @@ add_executable(pacman main.cpp
         Utils.cpp
         Utils.h
         pm_maps.cpp
-        pm_maps.h)
+        pm_maps.h
+)
 
 # Añadir las rutas de las cabeceras de freeglut
 include_directories(/usr/local/opt/freeglut/include)

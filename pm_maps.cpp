@@ -116,31 +116,27 @@ void printMap() {
 }
 
 void renderMap() {
-    char** map = getMap();  // Obtener el mapa actual
-    if (map == nullptr) {
+    char** map = getMap();
+    if (!map) {
         printf("No map loaded!\n");
         return;
     }
 
-    int xSize = xTabSize();  // Tamaño en X
-    int ySize = yTabSize();  // Tamaño en Y
+    int xSize = xTabSize();
+    int ySize = yTabSize();
 
     glPushMatrix();
 
     for (int y = 0; y < ySize; y++) {
         for (int x = 0; x < xSize; x++) {
             glPushMatrix();
-
-            // Posicionar el cubo en su lugar correspondiente
             glTranslatef((float)x - xSize / 2.0f, (float)y - ySize / 2.0f, 0.0f);
 
             if (map[x][y] == 0) {
-                // Obstáculo (cubo rojo)
-                glColor3f(1.0f, 0.0f, 0.0f);
+                glColor3f(1.0f, 0.0f, 0.0f);  // Obstáculos en rojo
                 glutSolidCube(1.0f);
             } else {
-                // Celda libre (cubo transparente o diferente)
-                glColor4f(0.0f, 0.5f, 0.0f, 0.5f);  // Verde semi-transparente
+                glColor4f(0.5f, 0.8f, 1.0f, 0.3f);  // Azul claro y transparente
                 glutSolidCube(1.0f);
             }
 
@@ -152,6 +148,7 @@ void renderMap() {
 }
 
 
+
 // Render each individual cell as a cube in 3D space
 void renderCell(int x, int y, int size) {
     glPushMatrix();
@@ -160,4 +157,3 @@ void renderCell(int x, int y, int size) {
     glutSolidCube(size);  // Draw the cube
     glPopMatrix();
 }
-

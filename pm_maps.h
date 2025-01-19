@@ -24,20 +24,16 @@
 
 void openMapsFile(char* name);
 void closeMapsFile();
+void resetMapCounter();
 
-int numberOfMaps();
 
 char** nextMap();
-char** getMap();       // the last map read
+char** getMap();
 int xTabSize();
 int yTabSize();
-int numGhosts();
-int numSmartGhosts();
 
-void printMap();
 
 // OpenGL Rendering
 void renderMap();
-void renderCell(int x, int y, int size);
 
 #endif // !__PM_MAPS_H__

@@ -56,27 +56,6 @@ build CMakeFiles/pacman.dir/main.cpp.o: CXX_COMPILER__pacman_unscanned_Debug /Us
   OBJECT_DIR = CMakeFiles/pacman.dir
   OBJECT_FILE_DIR = CMakeFiles/pacman.dir
 
-build CMakeFiles/pacman.dir/Cubo.cpp.o: CXX_COMPILER__pacman_unscanned_Debug /Users/daltongabrielabambari/Documents/portalegre/graficas/pacman/Cubo.cpp || cmake_object_order_depends_target_pacman
-  DEP_FILE = CMakeFiles/pacman.dir/Cubo.cpp.o.d
-  FLAGS = -g -std=gnu++20 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -fcolor-diagnostics
-  INCLUDES = -I/usr/local/opt/freeglut/include -iframework /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk/System/Library/Frameworks -isystem /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk/System/Library/Frameworks/GLUT.framework/Headers
-  OBJECT_DIR = CMakeFiles/pacman.dir
-  OBJECT_FILE_DIR = CMakeFiles/pacman.dir
-
-build CMakeFiles/pacman.dir/Escene.cpp.o: CXX_COMPILER__pacman_unscanned_Debug /Users/daltongabrielabambari/Documents/portalegre/graficas/pacman/Escene.cpp || cmake_object_order_depends_target_pacman
-  DEP_FILE = CMakeFiles/pacman.dir/Escene.cpp.o.d
-  FLAGS = -g -std=gnu++20 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -fcolor-diagnostics
-  INCLUDES = -I/usr/local/opt/freeglut/include -iframework /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk/System/Library/Frameworks -isystem /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk/System/Library/Frameworks/GLUT.framework/Headers
-  OBJECT_DIR = CMakeFiles/pacman.dir
-  OBJECT_FILE_DIR = CMakeFiles/pacman.dir
-
-build CMakeFiles/pacman.dir/Utils.cpp.o: CXX_COMPILER__pacman_unscanned_Debug /Users/daltongabrielabambari/Documents/portalegre/graficas/pacman/Utils.cpp || cmake_object_order_depends_target_pacman
-  DEP_FILE = CMakeFiles/pacman.dir/Utils.cpp.o.d
-  FLAGS = -g -std=gnu++20 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -fcolor-diagnostics
-  INCLUDES = -I/usr/local/opt/freeglut/include -iframework /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk/System/Library/Frameworks -isystem /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk/System/Library/Frameworks/GLUT.framework/Headers
-  OBJECT_DIR = CMakeFiles/pacman.dir
-  OBJECT_FILE_DIR = CMakeFiles/pacman.dir
-
 build CMakeFiles/pacman.dir/pm_maps.cpp.o: CXX_COMPILER__pacman_unscanned_Debug /Users/daltongabrielabambari/Documents/portalegre/graficas/pacman/pm_maps.cpp || cmake_object_order_depends_target_pacman
   DEP_FILE = CMakeFiles/pacman.dir/pm_maps.cpp.o.d
   FLAGS = -g -std=gnu++20 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -fcolor-diagnostics
@@ -92,7 +71,7 @@ build CMakeFiles/pacman.dir/pm_maps.cpp.o: CXX_COMPILER__pacman_unscanned_Debug 
 #############################################
 # Link the executable pacman
 
-build pacman: CXX_EXECUTABLE_LINKER__pacman_Debug CMakeFiles/pacman.dir/main.cpp.o CMakeFiles/pacman.dir/Cubo.cpp.o CMakeFiles/pacman.dir/Escene.cpp.o CMakeFiles/pacman.dir/Utils.cpp.o CMakeFiles/pacman.dir/pm_maps.cpp.o | /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk/System/Library/Frameworks/OpenGL.framework /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk/System/Library/Frameworks/GLUT.framework /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk/System/Library/Frameworks/Cocoa.framework
+build pacman: CXX_EXECUTABLE_LINKER__pacman_Debug CMakeFiles/pacman.dir/main.cpp.o CMakeFiles/pacman.dir/pm_maps.cpp.o | /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk/System/Library/Frameworks/OpenGL.framework /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk/System/Library/Frameworks/GLUT.framework /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk/System/Library/Frameworks/Cocoa.framework
   FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk
   LINK_LIBRARIES = -framework OpenGL  -framework GLUT  -framework Cocoa
   OBJECT_DIR = CMakeFiles/pacman.dir

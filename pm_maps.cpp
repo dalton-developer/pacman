@@ -17,6 +17,10 @@ static int xsize = 0;
 static int ghosts = 0;
 static int smartGhosts = 0;
 
+//var in main.c
+extern int visitedCount;
+extern int totalVisitable;
+
 void openMapsFile(char* name) {
     file = fopen(name, "r");
 
@@ -35,7 +39,7 @@ void deleteMap() {
             free(map[i]);
         free(map);
     }
-    map = NULL;  // this was missed in the other version - bug when no more maps and calling getMap()
+    map = NULL;
 
     xsize = ysize = ghosts = smartGhosts = 0;
 }
@@ -47,9 +51,11 @@ void closeMapsFile() {
     mapCounter = 0;
 }
 
-int numberOfMaps() {
-    return numMaps;
+void resetMapCounter() {
+    mapCounter = 0; // Restart map counter
 }
+
+
 
 char** nextMap() {
     int i, j;
@@ -72,6 +78,16 @@ char** nextMap() {
         }
     }
 
+    totalVisitable = 0;
+    visitedCount = 0;
+
+    for (int i = 0; i < xsize; i++) {
+        for (int j = 0; j < ysize; j++) {
+            if (map[i][j] == 1) {
+                totalVisitable++;
+            }
+        }
+    }
     mapCounter++;
     return map;
 }
@@ -88,38 +104,11 @@ int xTabSize() {
     return xsize;
 }
 
-int numGhosts() {
-    return ghosts;
-}
-
-int numSmartGhosts() {
-    return smartGhosts;
-}
-
-void printMap() {
-    int i, j;
-
-    if (map == NULL) {
-        printf("NO MAP!");
-        return;
-    }
-
-    for (j = ysize - 1; j >= 0; j--) {
-        for (i = 0; i < xsize; i++)
-            if (map[i][j] == 1)
-                printf("O ");
-            else
-                printf("  ");
-
-        printf("\n");
-    }
-}
-
 void renderMap() {
     char** map = getMap();
     if (!map) {
         printf("No map loaded!\n");
-        return;
+        exit(EXIT_FAILURE); // End program if ther is not maps available
     }
 
     int xSize = xTabSize();
@@ -132,13 +121,17 @@ void renderMap() {
             glPushMatrix();
             glTranslatef((float)x - xSize / 2.0f, (float)y - ySize / 2.0f, 0.0f);
 
+            // Made them thin
+            glScalef(1.0f, 1.0f, 0.2f);
+
             if (map[x][y] == 0) {
-                glColor3f(1.0f, 0.0f, 0.0f);  // Obstáculos en rojo
-                glutSolidCube(1.0f);
-            } else {
-                glColor4f(0.5f, 0.8f, 1.0f, 0.3f);  // Azul claro y transparente
-                glutSolidCube(1.0f);
+                glColor3f(0.0f, 0.0f, 0.2f);
+            } else if (map[x][y] == 1) {
+                glColor4f(0.1f, 1.0f, 1.0f, 0.4f);
+            } else if (map[x][y] == 2) {
+                glColor3f(1.0f, 1.0f, 0.0f);
             }
+            glutSolidCube(1.0f);
 
             glPopMatrix();
         }
@@ -149,11 +142,4 @@ void renderMap() {
 
 
 
-// Render each individual cell as a cube in 3D space
-void renderCell(int x, int y, int size) {
-    glPushMatrix();
-    glTranslatef(x * size, 0, y * size);  // Move to the correct position
-    glColor3f(0.8f, 0.8f, 0.8f);  // Set the color for the walls or cells
-    glutSolidCube(size);  // Draw the cube
-    glPopMatrix();
-}
+

@@ -4,12 +4,6 @@ project(pacman)
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(pacman main.cpp
-        Cubo.cpp
-        Cubo.h
-        Escene.cpp
-        Escene.h
-        Utils.cpp
-        Utils.h
         pm_maps.cpp
         pm_maps.h
 )
